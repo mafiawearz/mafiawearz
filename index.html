@@ -1,108 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mafia Wearz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MafiaWearz</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #000;
-      color: #fff;
+      background-color: #0d0d0d;
+      color: white;
+      overflow-x: hidden;
     }
     header {
-      background-color: #111;
-      padding: 30px;
-      text-align: center;
-      font-size: 2.5em;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      animation: fadeInDown 1.5s ease-out;
-    }
-    .intro {
-      padding: 40px 20px;
-      text-align: center;
-      font-size: 1.2em;
-      max-width: 800px;
-      margin: auto;
-      animation: fadeIn 2s ease-out;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      padding: 30px;
-      animation: fadeInUp 1.5s ease-out;
-    }
-    .product {
-      background-color: #1c1c1c;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    }
-    .product h3 {
-      margin-top: 10px;
-      font-size: 1.3em;
-    }
-    .product p {
-      color: #ccc;
-    }
-    .contact {
-      padding: 30px;
-      background-color: #111;
-      text-align: center;
-    }
-    .contact h2 {
-      margin-bottom: 10px;
-    }
-    .contact p {
-      color: #ccc;
-    }
-
-    @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-40px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(40px);}
-      to {opacity: 1; transform: translateY(0);}
+      height: 100vh;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      animation: fadeIn 2s ease-in-out;
     }
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #ff0000;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .product {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #ff0000aa;
+    }
+    .product h2 {
+      margin-top: 0;
+      color: #ff4444;
+    }
+    .note {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    .badge {
+      background: #ff0000;
+      padding: 6px 12px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .contact {
+      margin-top: 30px;
+      padding-top: 10px;
+      border-top: 1px solid #333;
+    }
+    .order-btn {
+      background: #ff0000;
+      padding: 10px 20px;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+    .order-btn:hover {
+      background: #cc0000;
     }
   </style>
 </head>
 <body>
-  <header>Mafia Wearz</header>
-
-  <section class="intro">
-    <p>Welcome to <strong>Mafia Wearz</strong> — India’s boldest streetwear brand. All India Cash on Delivery available. Customize your outfit, rule your vibe.</p>
-  </section>
-
-  <section class="products">
+  <header>
+    <h1>MafiaWearz</h1>
+    <div class="tagline">Wear the Power. Live the Mafia Life.</div>
+  </header>  <section>
     <div class="product">
-      <h3>Basic T-shirt</h3>
-      <p>₹400 – Available in all colors</p>
+      <h2>Classic T-Shirt – ₹400</h2>
+      <div class="note">Available in all colors. Customization available.</div>
     </div>
     <div class="product">
-      <h3>Oversized T-shirt</h3>
-      <p>₹600 – Stylish comfort fit</p>
+      <h2>Oversized T-Shirt – ₹600</h2>
+      <div class="note">Bold look. All colors. Custom design option.</div>
     </div>
     <div class="product">
-      <h3>Premium Hoodie</h3>
-      <p>₹1500 – All-weather beast mode</p>
-    </div>
-  </section>
+      <h2>Premium Hoodie – ₹1500</h2>
+      <div class="note">Comfort and power. Available in every color.</div>
+    </div><div class="badge">All India Cash on Delivery Available</div>
 
-  <section class="contact">
-    <h2>Order Now</h2>
-    <p>📞 WhatsApp: <a href="https://wa.me/918220435476" style="color:#0f0;">8220435476</a></p>
-    <p>🕕 Timing: 6:00 PM – 8:00 AM (IST)</p>
-    <p>📦 Cash on Delivery across India</p>
+<button class="order-btn" onclick="alert('Ordering system coming soon!')">Order Now</button>
+
+<div class="contact">
+  <p><strong>Contact:</strong> +91 82204 35476</p>
+  <p><strong>Working Hours:</strong> 6:00 PM – 8:00 AM (IST)</p>
+</div>
+
   </section>
 </body>
 </html>
