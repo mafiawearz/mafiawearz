@@ -1,131 +1,32 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mafia Wearz Order Form</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      font-family: 'Orbitron', sans-serif;
-      color: white;
-      overflow-x: hidden;
-    }
-    .container {
-      max-width: 500px;
-      margin: 80px auto;
-      padding: 30px;
-      background-color: #141414;
-      box-shadow: 0 0 30px #ff4d00;
-      border-radius: 12px;
-      animation: fadeInUp 1s ease-in-out;
-    }
-    h1 {
-      text-align: center;
-      color: #ff4d00;
-      font-size: 28px;
-      margin-bottom: 30px;
-    }
-    label {
-      margin-top: 15px;
-      display: block;
-      font-size: 14px;
-    }
-    input, select {
-      width: 100%;
-      padding: 12px;
-      margin-top: 6px;
-      margin-bottom: 10px;
-      border: none;
-      border-radius: 6px;
-      background-color: #262626;
-      color: white;
-      font-size: 15px;
-    }
-    button {
-      width: 100%;
-      padding: 14px;
-      background-color: #ff4d00;
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease-in-out;
-    }
-    button:hover {
-      background-color: #ff3300;
-    }
-    @keyframes fadeInUp {
-      from {
-        transform: translateY(50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mafia Wearz</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>  <div class="container">
-    <h1>Mafia Wearz - Order Now</h1>
+<body>
+  <div class="container">
+    <h1 class="fade-in">Welcome to Mafia Wearz</h1>
+
     <form>
-      <label for="name">Full Name</label>
-      <input type="text" id="name" required><label for="phone">Phone Number</label>
-  <input type="tel" id="phone" required>
+      <label for="state">Select State:</label>
+      <select id="state">
+        <option value="">--Choose State--</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Maharashtra">Maharashtra</option>
+      </select>
 
-  <label for="altPhone">Alternate Phone (Optional)</label>
-  <input type="tel" id="altPhone">
+      <label for="district">Select District:</label>
+      <select id="district">
+        <option value="">--Choose District--</option>
+      </select>
+    </form>
+  </div>
 
-  <label for="email">Email</label>
-  <input type="email" id="email" required>
-
-  <label for="country">Country</label>
-  <select id="country" disabled>
-    <option selected>India</option>
-  </select>
-
-  <label for="state">State</label>
-  <select id="state" onchange="loadDistricts()" required>
-    <option value="">Select State</option>
-    <option value="Tamil Nadu">Tamil Nadu</option>
-    <option value="Maharashtra">Maharashtra</option>
-    <option value="Karnataka">Karnataka</option>
-    <option value="Kerala">Kerala</option>
-  </select>
-
-  <label for="district">District</label>
-  <select id="district" required>
-    <option value="">Select District</option>
-  </select>
-
-  <button type="submit">Place Order</button>
-</form>
-
-  </div>  <script>
-    const districts = {
-      "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem"],
-      "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane"],
-      "Karnataka": ["Bengaluru", "Mysuru", "Hubli", "Mangaluru", "Belagavi"],
-      "Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Kollam", "Thrissur"]
-    };
-
-    function loadDistricts() {
-      const state = document.getElementById("state").value;
-      const districtSelect = document.getElementById("district");
-
-      districtSelect.innerHTML = '<option value="">Select District</option>';
-      if (districts[state]) {
-        districts[state].forEach(function(district) {
-          const option = document.createElement("option");
-          option.textContent = district;
-          option.value = district;
-          districtSelect.appendChild(option);
-        });
-      }
-    }
-  </script></body>
+  <script src="script.js"></script>
+</body>
 </html>
