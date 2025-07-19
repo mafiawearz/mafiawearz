@@ -1,32 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mafia Wearz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MafiaWearz</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1 class="fade-in">Welcome to Mafia Wearz</h1>
-
+  <!-- Intro Section -->
+  <section class="intro">
+    <div class="car-entry">
+      <img src="car.gif" alt="Mafia Car Animation" />
+    </div>
+    <div class="logo-animation">
+      <h1 class="logo">🦁 MafiaWearz</h1>
+    </div>
+  </section>  <!-- Products Section -->  <section class="products">
+    <h2>Explore Our Products</h2>
+    <div class="product-list">
+      <div class="product">
+        <h3>T-Shirt</h3>
+        <p>Price: ₹400</p>
+        <button onclick="showForm('T-Shirt')">Order Now</button>
+      </div>
+      <div class="product">
+        <h3>Oversized T-Shirt</h3>
+        <p>Price: ₹600</p>
+        <button onclick="showForm('Oversized T-Shirt')">Order Now</button>
+      </div>
+      <div class="product">
+        <h3>Hoodie</h3>
+        <p>Price: ₹1500</p>
+        <button onclick="showForm('Hoodie')">Order Now</button>
+      </div>
+    </div>
+  </section>  <!-- Order Form (Hidden Initially) -->  <section class="order-form" id="orderForm">
+    <h2>Complete Your Order</h2>
     <form>
-      <label for="state">Select State:</label>
-      <select id="state">
-        <option value="">--Choose State--</option>
+      <input type="text" placeholder="Your Name" required />
+      <input type="tel" placeholder="Phone Number" required />
+      <input type="tel" placeholder="Alternate Phone (Optional)" />
+      <input type="email" placeholder="Email Address" required />
+      <input type="text" value="India" readonly />
+      <select id="stateSelect" onchange="populateDistricts()">
+        <option value="">Select State</option>
         <option value="Tamil Nadu">Tamil Nadu</option>
         <option value="Kerala">Kerala</option>
         <option value="Karnataka">Karnataka</option>
         <option value="Maharashtra">Maharashtra</option>
+        <!-- Add more states here -->
       </select>
-
-      <label for="district">Select District:</label>
-      <select id="district">
-        <option value="">--Choose District--</option>
+      <select id="districtSelect">
+        <option value="">Select District</option>
       </select>
+      <textarea placeholder="Full Delivery Address" required></textarea>
+      <button type="submit">Submit Order</button>
     </form>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+  </section>  <audio autoplay loop>
+    <source src="intro-sound.mp3" type="audio/mpeg">
+  </audio>  <script src="script.js"></script></body>
 </html>
