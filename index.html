@@ -2,58 +2,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MafiaWearz</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+  <title>Mafia Wearz</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background-color: #000;
+      color: white;
+      overflow-x: hidden;
+    }
+    .intro {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: url('car-entry.gif') center/cover no-repeat;
+      animation: fadeOut 7s forwards;
+    }
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+    .main-content {
+      display: none;
+      padding: 20px;
+      text-align: center;
+    }
+    .show {
+      display: block;
+    }
+    .product-btn {
+      background: #ff0000;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      margin-top: 30px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    .products {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+    .product {
+      width: 30%;
+      cursor: pointer;
+    }
+    .product img {
+      width: 100%;
+      border-radius: 15px;
+    }
+    .details {
+      margin-top: 20px;
+      display: none;
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    select, input {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-  <div id="intro-animation" class="intro">
-    <h1 class="logo">MafiaWearz</h1>
-  </div>  <div class="container hidden" id="main-content">
-    <section class="hero">
-      <h1>Welcome to MafiaWearz</h1>
-      <p>Gear up like a true Mafia.</p>
-      <button id="view-products">See Our Products</button>
-    </section><section class="products hidden" id="product-options">
-  <h2>Select a Product</h2>
-  <div class="product-list">
-    <div class="product" data-product="tshirt">
-      <img src="tshirt.jpg" alt="T-shirt" />
-      <p>T-shirt</p>
-    </div>
-    <div class="product" data-product="oversized">
-      <img src="oversized.jpg" alt="Oversized T-shirt" />
-      <p>Oversized T-shirt</p>
-    </div>
-    <div class="product" data-product="hoodie">
-      <img src="hoodie.jpg" alt="Hoodie" />
-      <p>Hoodie</p>
-    </div>
+  <div class="intro">
+    <audio autoplay>
+      <source src="intro.mp3" type="audio/mpeg">
+    </audio>
+    <h1 style="font-size: 40px; text-shadow: 2px 2px #ff0000;">MAFIA WEARZ</h1>
+  </div>  <div class="main-content" id="mainContent">
+    <h1>Welcome to Mafia Wearz</h1>
+    <button class="product-btn" onclick="showProducts()">See Our Products</button><div class="products" id="productSection" style="display: none;">
+  <div class="product" onclick="showDetails('tshirt')">
+    <img src="tshirt.jpg" alt="T-shirt">
+    <p>T-shirt</p>
   </div>
-</section>
+  <div class="product" onclick="showDetails('oversized')">
+    <img src="oversized.jpg" alt="Oversized T-shirt">
+    <p>Oversized T-shirt</p>
+  </div>
+  <div class="product" onclick="showDetails('hoodie')">
+    <img src="hoodie.jpg" alt="Hoodie">
+    <p>Hoodie</p>
+  </div>
+</div>
 
-<section class="customizer hidden" id="customizer-section">
-  <h2>Customize Your <span id="selected-product-name"></span></h2>
-  <form>
-    <label for="size">Size:</label>
-    <select id="size">
+<div class="details" id="productDetails">
+  <h2>Customize Your Product</h2>
+  <label>Size:
+    <select>
       <option>S</option>
       <option>M</option>
       <option>L</option>
       <option>XL</option>
-      <option>XXL</option>
     </select>
+  </label><br>
+  <label>Color:
+    <input type="color" />
+  </label><br>
+  <label>State:
+    <select id="stateSelect" onchange="loadDistricts()"></select>
+  </label><br>
+  <label>District:
+    <select id="districtSelect"></select>
+  </label>
+</div>
 
-    <label for="color">Color:</label>
-    <input type="color" id="color" />
+  </div>  <script>
+    const stateDistricts = {
+      'Tamil Nadu': ['Chennai', 'Coimbatore', 'Madurai', 'Namakkal'],
+      'Kerala': ['Kochi', 'Thiruvananthapuram', 'Kozhikode'],
+      'Karnataka': ['Bengaluru', 'Mysuru', 'Mangalore'],
+      'Maharashtra': ['Mumbai', 'Pune', 'Nagpur']
+    };
 
-    <label for="custom-text">Custom Text (Optional):</label>
-    <input type="text" id="custom-text" placeholder="Enter name or tag..." />
+    window.onload = () => {
+      setTimeout(() => {
+        document.querySelector('.intro').style.display = 'none';
+        document.getElementById('mainContent').classList.add('show');
+        loadStates();
+      }, 7000);
+    };
 
-    <button type="submit">Order Now</button>
-  </form>
-</section>
+    function showProducts() {
+      document.getElementById('productSection').style.display = 'flex';
+    }
 
-  </div>
-</body>
+    function showDetails(product) {
+      document.getElementById('productDetails').style.display = 'block';
+    }
+
+    function loadStates() {
+      const stateSelect = document.getElementById('stateSelect');
+      for (let state in stateDistricts) {
+        const opt = document.createElement('option');
+        opt.value = state;
+        opt.innerText = state;
+        stateSelect.appendChild(opt);
+      }
+      loadDistricts();
+    }
+
+    function loadDistricts() {
+      const state = document.getElementById('stateSelect').value;
+      const districts = stateDistricts[state] || [];
+      const districtSelect = document.getElementById('districtSelect');
+      districtSelect.innerHTML = '';
+      districts.forEach(d => {
+        const opt = document.createElement('option');
+        opt.value = d;
+        opt.innerText = d;
+        districtSelect.appendChild(opt);
+      });
+    }
+  </script></body>
 </html>
