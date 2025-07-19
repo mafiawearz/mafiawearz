@@ -1,22 +1,72 @@
-<!-- style.css -->body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #000; color: #fff; overflow-x: hidden; }
+/* styles.css */
 
-#welcome-section { height: 100vh; background: url('car.gif') no-repeat center center/cover; display: flex; justify-content: center; align-items: center; position: relative; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
 
-.logo { font-size: 3em; font-weight: bold; animation: roar 1.5s ease-in-out forwards; opacity: 0; }
+.container, .products, .customization {
+  display: none;
+  padding: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
 
-@keyframes roar { 0% { transform: scale(0.3); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+.intro {
+  height: 100vh;
+  background: url('https://media.giphy.com/media/h8MLbvcU6qLuwZb9sf/giphy.gif') center center no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: white;
+}
 
-.product-section { padding: 40px; text-align: center; }
+button {
+  padding: 10px 25px;
+  font-size: 1rem;
+  background: #e50914;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-.product { background: #111; margin: 20px auto; padding: 20px; border-radius: 12px; width: 300px; box-shadow: 0 0 10px rgba(255,255,255,0.1); transition: transform 0.3s ease; }
+button:hover {
+  background: #b40610;
+}
 
-.product:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+.products img {
+  width: 150px;
+  margin: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
 
-button { background: crimson; color: white; border: none; padding: 10px 20px; font-size: 1em; cursor: pointer; border-radius: 5px; transition: background 0.3s; }
+.products img:hover {
+  transform: scale(1.1);
+}
 
-button:hover { background: darkred; }
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
 
-select, input { margin: 10px; padding: 10px; border-radius: 5px; border: none; width: 80%; }
+form select, form input {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
 
-form { background: #111; padding: 20px; border-radius: 12px; max-width: 400px; margin: 40px auto; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
-
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
