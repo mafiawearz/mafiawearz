@@ -1,114 +1,43 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MafiaWearz</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0d0d0d;
-      color: white;
-      overflow-x: hidden;
-    }
-    header {
-      height: 100vh;
-      background: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      animation: fadeIn 2s ease-in-out;
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    h1 {
-      font-size: 3rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      color: #ff0000;
-    }
-    .tagline {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .product {
-      background: #1a1a1a;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 10px #ff0000aa;
-    }
-    .product h2 {
-      margin-top: 0;
-      color: #ff4444;
-    }
-    .note {
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-    .badge {
-      background: #ff0000;
-      padding: 6px 12px;
-      border-radius: 8px;
-      display: inline-block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    .contact {
-      margin-top: 30px;
-      padding-top: 10px;
-      border-top: 1px solid #333;
-    }
-    .order-btn {
-      background: #ff0000;
-      padding: 10px 20px;
-      border: none;
-      color: white;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background 0.3s;
-    }
-    .order-btn:hover {
-      background: #cc0000;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>MafiaWearz</h1>
-    <div class="tagline">Wear the Power. Live the Mafia Life.</div>
-  </header>  <section>
-    <div class="product">
-      <h2>Classic T-Shirt – ₹400</h2>
-      <div class="note">Available in all colors. Customization available.</div>
-    </div>
-    <div class="product">
-      <h2>Oversized T-Shirt – ₹600</h2>
-      <div class="note">Bold look. All colors. Custom design option.</div>
-    </div>
-    <div class="product">
-      <h2>Premium Hoodie – ₹1500</h2>
-      <div class="note">Comfort and power. Available in every color.</div>
-    </div><div class="badge">All India Cash on Delivery Available</div>
+// MafiaWearz PRO Website (Starter) // Technologies: React + Tailwind + Framer Motion + Firebase (next step)
 
-<button class="order-btn" onclick="alert('Ordering system coming soon!')">Order Now</button>
+import { useEffect } from "react"; import { motion } from "framer-motion"; import { Button } from "@/components/ui/button"; import { Card, CardContent } from "@/components/ui/card";
 
-<div class="contact">
-  <p><strong>Contact:</strong> +91 82204 35476</p>
-  <p><strong>Working Hours:</strong> 6:00 PM – 8:00 AM (IST)</p>
-</div>
+export default function HomePage() { useEffect(() => { const audio = new Audio("/mafia-intro.mp3"); audio.play(); }, []);
 
+return ( <main className="min-h-screen bg-black text-white font-sans"> {/* Animated Car Entrance */} <section className="relative h-screen flex items-center justify-center overflow-hidden"> <motion.img src="/car-enter.gif" alt="Mafia Car" initial={{ x: "-100vw" }} animate={{ x: 0 }} transition={{ type: "spring", stiffness: 70, damping: 20 }} className="absolute w-full h-full object-cover z-0 opacity-50" />
+
+{/* Logo Reveal */}
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 1.5, duration: 1 }}
+      className="z-10 text-center"
+    >
+      <h1 className="text-5xl font-extrabold tracking-widest">MafiaWearz</h1>
+      <p className="text-xl mt-2">Unleash the Beast Inside</p>
+    </motion.div>
   </section>
-</body>
-</html>
+
+  {/* Product Preview */}
+  <section className="p-10 bg-gray-900 grid md:grid-cols-3 gap-6">
+    {[
+      { name: "T-shirt", price: "₹400", image: "/tshirt.png" },
+      { name: "Oversized Tee", price: "₹600", image: "/oversized.png" },
+      { name: "Hoodie", price: "₹1500", image: "/hoodie.png" },
+    ].map((item, i) => (
+      <Card key={i} className="bg-black border-white/10">
+        <CardContent className="p-4">
+          <img src={item.image} alt={item.name} className="w-full rounded-xl" />
+          <h2 className="text-2xl mt-4 font-semibold">{item.name}</h2>
+          <p className="text-lg">{item.price}</p>
+          <Button className="mt-3 w-full bg-white text-black hover:bg-red-600 hover:text-white transition-all duration-300">
+            Customize & Order
+          </Button>
+        </CardContent>
+      </Card>
+    ))}
+  </section>
+</main>
+
+); }
+
